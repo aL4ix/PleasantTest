@@ -1,0 +1,10 @@
+Use,LoginPage,,,
+,ProductsPage,,,
+,CartPage,,,
+,,,,
+First e2e,,,,
+,Open Page,https://www.saucedemo.com/,,
+,Login user,standard_user,secret_sauce,
+,Add product,Sauce Labs Backpack,,
+,Open shopping cart,,,
+,Checkout,First,Last,12345

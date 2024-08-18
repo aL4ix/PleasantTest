@@ -1,0 +1,4 @@
+Id,mapping,implements
+title,"//input[@data-test=""title""]",load
+shopping cart button,"//a[contains(@class,""shopping_cart_link"")]",
+one product,"//div[@data-test=""inventory-item""]",OneProduct

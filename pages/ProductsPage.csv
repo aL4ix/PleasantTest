@@ -1,0 +1,10 @@
+Add product,,,,,,
+,[Arguments],${productName},,,,
+,# Get section with ProductName = ${productName},,,,,
+,# Add the ability to search by index,,,,,
+,Search,one product,with,Item name,as,${productName}
+,Add to cart,,,,,
+,,,,,,
+Open shopping cart,,,,,,
+,Click on,Shopping cart button,,,,
+,Expect,CartPage,to be,displayed,,

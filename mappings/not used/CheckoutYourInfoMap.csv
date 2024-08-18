@@ -1,0 +1,5 @@
+id,xpath,implements
+First name field,"//input[@data-test=""lastName""]",load
+Last name field,"//input[@data-test=""firstName""]",load
+Zipcode field,"//input[@data-test=""postalCode""]",load
+Continue button,"//input[@data-test=""continue""]",load

@@ -1,0 +1,3 @@
+Id,mapping,implements
+Add to cart button,//button,load
+Item name,"//div[@data-test=""inventory-item-name""]",search
