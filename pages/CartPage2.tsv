@@ -1,0 +1,8 @@
+Checkout
+	[Arguments]	FIRST NAME	LAST NAME	ZIP CODE
+	Click on	Checkout button
+	Type	FIRST NAME	on	First name field
+	Type	LAST NAME	on	Last name field
+	Type	ZIP CODE	on	Zipcode field
+	Click on	Continue button
+	Click on	Finish button

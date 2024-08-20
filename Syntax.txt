@@ -1,0 +1,46 @@
+# Syntax expresions
+IDENTIFIER = letters,numbers,space
+XPATH = any string compatible with xpath
+COMMAND = Any reserved word or string defined in a library
+reserved word = {Search, Expect, Then, [Arguments]}
+library = Browser defines [Click on, Type, ]
+parameters = this is defined exactly by the COMMAND
+EXPECTATION = any string defined in a library
+
+# Native Commands
+Search > IDENTIFIER > with > IDENTIFIER > equals to > IDENTIFIER
+Expect > IDENTIFIER > to be > EXPECTATION
+Then > COMMAND > command parameters
+Sum it as > IDENTIFIER
+
+# Browser Commands
+Click on > IDENTIFIER
+Type > IDENTIFIER > on > IDENTIFIER
+Get Number > IDENTIFIER
+
+# Mapping
+id  xpath   implements
+id = IDENTIFIER
+xpath = XPATH
+implements = IDENTIFIER,IDENTIFIER,IDENTIFIER...
+
+# Method
+IDENTIFIER (Test)
+    COMMAND parameters
+    COMMAND parameters
+    COMMAND parameters
+    ...
+
+# Test
+(Optional section)
+Use IDENTIFIER
+    IDENTIFIER
+    IDENTIFIER
+    ...
+
+(method)
+
+(another method)
+
+# Page
+(same as Test, just they can use LIBCOMs and Tests can only use PAGECOMs)

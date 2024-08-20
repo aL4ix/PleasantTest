@@ -1,8 +1,9 @@
-Checkout,,,,
-,[Arguments],$firstName,$lastName,$zipCode
-,Click on,Checkout button,,
-,Type,$firstName,on,First name field
-,Type,$lastName,on,Last name field
-,Type,$zipCode,on,Zipcode field
-,Click on,Continue button,,
-,Click on,Finish button,,
+Checkout,,,,,
+,[Arguments],FIRST NAME,LAST NAME,ZIP CODE,SUB TOTAL
+,Click on,Checkout button,,,
+,Type,FIRST NAME,on,First name field,
+,Type,LAST NAME,on,Last name field,
+,Type,ZIP CODE,on,Zipcode field,
+,Click on,Continue button,,,
+,Expect,Sub total,to be,SUB TOTAL,
+,Click on,Finish button,,,
