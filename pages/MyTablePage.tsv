@@ -1,0 +1,7 @@
+Enter search term,,,,,,
+,[Arguments],TERM,,,,
+,Type,TERM,on,Search field,,
+,,,,,,
+Search name in my table,,,,,,
+,[Arguments],NAME,,,,
+,Expect,NAME,In column,Name,In table,My table

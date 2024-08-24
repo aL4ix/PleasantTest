@@ -1,0 +1,3 @@
+Id,Xpath,Implements
+My table,"//table[@id=""example""]","table(Name,Position,Office,Age,Start date,Salary)"
+Search field,"//input[@type=""search""]",

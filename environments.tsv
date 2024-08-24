@@ -1,0 +1,4 @@
+Variable,QA,Staging,Prod
+host,qa.myhost.com,staging.myhost.com,myhost.com
+invalidUser,123,234,345
+validUser,321,432,543

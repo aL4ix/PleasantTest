@@ -10,3 +10,5 @@
 * Add environments, QA, Staging, Prod
 * Add multiple browsers
 * Add loops, String operations, Number operations like sum
+* Tables
+* Animations

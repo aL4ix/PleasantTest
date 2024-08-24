@@ -17,6 +17,7 @@ Sum it as > IDENTIFIER
 Click on > IDENTIFIER
 Type > IDENTIFIER > on > IDENTIFIER
 Get Number > IDENTIFIER
+Expect > IDENTIFIER > In column > IDENTIFIER > In table > IDENTIFIER
 
 # Mapping
 id  xpath   implements
@@ -44,3 +45,13 @@ Use IDENTIFIER
 
 # Page
 (same as Test, just they can use LIBCOMs and Tests can only use PAGECOMs)
+
+
+If we let libraries define syntax like in cucumber then we can define patterns and we can resolve them easily without having to have a monolitic central code to parse every code, and special cases for "internal" libraries like FE or BE.
+So that means all Pages and "Services?" are going to use cucumber-like functions. then tests only use Pages or "Services?"
+How does EXPECTATION enter into cucumber-like? Native commands are not special, just cucumber-like phrases that are defined before anybody, right now there is only "to be" that i think that should be "to be equals to", then FE can define "to be displayed". That means there is no limit in the phrases, and no standard, as of internal libraries we define a standard, but for PageComs and ServComs there is no standard but they cannot define complex phrases, only methods, with a name at the beginning and parameters after, the parameters should support named parameters, for readability. Should they be separate cells like NAME=,Veronica? If they are separate then the user can generate cucumber-like phrases, but not complex., which is good. Would there be confusion about PageComms, ServComms and methods? some have "=", some don't. Maybe the difference is good, to diferenciate commands with methods.
+If we define cucumber-like phrases then we can define we only accept integer IDENTIFIERs, or dates, which is very good.
+Obviously if somebody define two phrases that are the same, then you need FE.phrase, same for methods, Page.Method.
+Add IfMobile, IfDesktop
+
+
