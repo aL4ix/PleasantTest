@@ -14,4 +14,11 @@ public class GlueParams {
     public String getNextString() {
         return params.get(index++);
     }
+
+    public void assertString(String expected) {
+        String actual = params.get(index++);
+        if (!actual.equals(expected)) {
+            throw new IllegalArgumentException("Expected %s but found %s".formatted(expected, actual));
+        }
+    }
 }

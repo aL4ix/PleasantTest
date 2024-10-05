@@ -27,5 +27,6 @@ public class Main {
         System.out.println(module);
         module.parse();
         System.out.println(module.getSections());
+        module.execute("Login user");
     }
 }

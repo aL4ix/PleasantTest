@@ -3,13 +3,17 @@ package org.example.sections;
 import com.opencsv.exceptions.CsvException;
 import lombok.Getter;
 import org.example.columns.MappingColumns;
+import org.example.commands.Browser;
+import org.example.commands.Glue;
 import org.example.tables.Table;
 import org.example.utils.ReadCSV;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Module {
     public static final int[] SECTION_START = {0};
@@ -17,15 +21,20 @@ public class Module {
 
     private final String name;
     List<List<String>> code;
-    Table<MappingColumns> mapping;
+    List<Table<MappingColumns>> mappings;
     @Getter
-    List<Section> sections;
+    Map<String, Section> sections;
+    List<Glue> glues;
 
     public Module(String path) throws IOException, CsvException {
         code = ReadCSV.readCSVWithoutColumns(path);
         name = new File(path).getName().replace("Page.csv", "");
-        mapping = ReadCSV.readCSVWithEnumColumns(MappingColumns.class, "mappings/"+ name +"Map.csv");
-        sections = new ArrayList<>();
+        mappings = new ArrayList<>();
+        Table<MappingColumns> mapping = ReadCSV.readCSVWithEnumColumns(MappingColumns.class, "mappings/"+ name +"Map.csv");
+        mappings.add(mapping);
+        sections = new LinkedHashMap<>();
+        glues = new ArrayList<>();
+        glues.add(new Browser());
     }
 
     public void parse() {
@@ -38,12 +47,16 @@ public class Module {
             assertThereIsOnlyTheseInRow(SECTION_START, EXPECTED_SECTION_BEGINNING.formatted(lineNum));
             String sectionName = row.get(0);
             Section section = new Section(sectionName);
-            sections.add(section);
+            sections.put(sectionName, section);
             lineNum += section.parse(code, ++lineNum);
 
             lineNum++;
         }
 
+    }
+
+    public void execute(String sectionName) {
+        sections.get(sectionName).execute(mappings, glues);
     }
 
     public static void assertThereIsOnlyTheseInRow(int[] columns, String message) {
@@ -79,8 +92,9 @@ public class Module {
         return "Module{" +
                 "name='" + name + '\'' +
                 ", code=" + code +
-                ", mapping=" + mapping +
+                ", mappings=" + mappings +
                 ", sections=" + sections +
+                ", commandGlues=" + glues +
                 '}';
     }
 }
