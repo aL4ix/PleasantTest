@@ -3,10 +3,10 @@ package org.example.tables;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class GeneralTableRow<T> implements TableRow<T> {
+public class TableRowImpl<T> implements TableRow<T> {
     Map<T, String> tableRow;
 
-    public GeneralTableRow() {
+    public TableRowImpl() {
         tableRow = new LinkedHashMap<>();
     }
 
@@ -27,7 +27,7 @@ public class GeneralTableRow<T> implements TableRow<T> {
 
     @Override
     public String toString() {
-        return "GeneralTableRow" +
+        return "TableRowImpl" +
                 tableRow;
     }
 }

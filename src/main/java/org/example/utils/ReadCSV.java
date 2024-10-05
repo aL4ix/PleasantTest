@@ -3,7 +3,8 @@ package org.example.utils;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvException;
-import org.example.tables.GeneralTableRow;
+import org.example.tables.TableRowImpl;
+import org.example.tables.Table;
 import org.example.tables.TableRow;
 
 import java.io.FileReader;
@@ -13,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ReadCSV {
-    public static <T extends Enum<T> & ColumnEnum> List<TableRow<T>> readCSVWithEnumColumns(Class<T> enumClass, String csvFile) throws IOException, CsvException {
+    public static <T extends Enum<T> & ColumnEnum> Table<T> readCSVWithEnumColumns(Class<T> enumClass, String csvFile) throws IOException, CsvException {
         List<TableRow<T>> csvData = new ArrayList<>();
         try (CSVReader csvReader = new CSVReaderBuilder(new FileReader(csvFile)).build()) {
             String[] header = csvReader.readNext();
@@ -28,7 +29,7 @@ public class ReadCSV {
             }
             String[] values;
             while ((values = csvReader.readNext()) != null) {
-                TableRow<T> tableRow = new GeneralTableRow<>();
+                TableRow<T> tableRow = new TableRowImpl<>();
                 for (int i = 0; i < values.length; i++) {
                     tableRow.setCell(enumConstants[i], values[i]);
                 }
@@ -36,7 +37,7 @@ public class ReadCSV {
             }
 
         }
-        return csvData;
+        return new Table<>(csvData);
     }
 
     public static List<TableRow<String>> readCSVWithColumns(String csvFile) throws IOException, CsvException {
@@ -46,7 +47,7 @@ public class ReadCSV {
 
             String[] values;
             while ((values = csvReader.readNext()) != null) {
-                TableRow<String> tableRow = new GeneralTableRow<>();
+                TableRow<String> tableRow = new TableRowImpl<>();
                 for (int i = 0; i < values.length; i++) {
                     tableRow.setCell(header[i], values[i]);
                 }

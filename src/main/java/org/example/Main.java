@@ -2,6 +2,8 @@ package org.example;
 
 import com.opencsv.exceptions.CsvException;
 import org.example.columns.MappingColumns;
+import org.example.sections.Module;
+import org.example.tables.Table;
 import org.example.tables.TableRow;
 import org.example.utils.ReadCSV;
 
@@ -12,7 +14,7 @@ public class Main {
     public static void main(String[] args) throws IOException, CsvException {
         System.out.println("Hello world!");
 
-        List<TableRow<MappingColumns>> mapEntries = ReadCSV.readCSVWithEnumColumns(MappingColumns.class, "mappings/LoginMap.csv");
+        Table<MappingColumns> mapEntries = ReadCSV.readCSVWithEnumColumns(MappingColumns.class, "mappings/LoginMap.csv");
         System.out.println(mapEntries);
 
         List<TableRow<String>> envEntries = ReadCSV.readCSVWithColumns("environments.csv");
@@ -20,5 +22,10 @@ public class Main {
 
         List<List<String>> page = ReadCSV.readCSVWithoutColumns("pages/LoginPage.csv");
         System.out.println(page);
+
+        Module module = new Module("pages/LoginPage.csv");
+        System.out.println(module);
+        module.parse();
+        System.out.println(module.getSections());
     }
 }
