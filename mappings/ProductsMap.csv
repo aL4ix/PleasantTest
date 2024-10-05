@@ -1,4 +1,4 @@
-Id,mapping,implements
+Id,XPath,Implements
 Title,"//input[@data-test=""title""]",load
 Shopping cart button,"//a[contains(@class,""shopping_cart_link"")]",
 One product,"//div[@data-test=""inventory-item""]",OneProductPage

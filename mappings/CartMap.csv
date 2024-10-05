@@ -1,4 +1,4 @@
-id,xpath,implements
+Id,XPath,Implements
 Finish button,"//button[@data-test=""finish""]",load
 First name field,"//input[@data-test=""lastName""]",
 Last name field,"//input[@data-test=""firstName""]",

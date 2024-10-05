@@ -1,4 +1,4 @@
-Id,mapping,implements
+Id,XPath,Implements
 Add to cart button,//button,load
 Item name,"//div[@data-test=""inventory-item-name""]",search
 Item price,"//div[@data-test=""inventory-item-price""]",
