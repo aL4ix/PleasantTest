@@ -2,6 +2,7 @@ package org.example;
 
 import com.opencsv.exceptions.CsvException;
 import org.example.columns.MappingColumns;
+import org.example.commands.Browser;
 import org.example.sections.Module;
 import org.example.tables.Table;
 import org.example.tables.TableRow;
@@ -28,5 +29,6 @@ public class Main {
         module.parse();
         System.out.println(module.getSections());
         module.execute("Login user");
+        Browser.parse();
     }
 }

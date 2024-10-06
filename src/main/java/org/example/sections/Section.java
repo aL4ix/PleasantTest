@@ -40,7 +40,6 @@ public class Section {
             String command = rows.get(0);
             for (Glue glue : glues) {
                 if (glue.getCommands().contains(command)) {
-                    System.out.println("Found command %s".formatted(command));
                     glue.glue(command, new GlueParams(rows.subList(1, rows.size())));
                 }
             }
