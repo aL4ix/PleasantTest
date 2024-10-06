@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class TableRowImpl<T> implements TableRow<T> {
-    Map<T, String> tableRow;
+    private Map<T, String> tableRow;
 
     public TableRowImpl() {
         tableRow = new LinkedHashMap<>();

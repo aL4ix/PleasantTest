@@ -3,7 +3,7 @@ package org.example.tables;
 import java.util.List;
 
 public class Table<T> {
-    List<TableRow<T>> rows;
+    private List<TableRow<T>> rows;
 
     public Table(List<TableRow<T>> rows) {
         this.rows = rows;

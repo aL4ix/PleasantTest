@@ -4,7 +4,7 @@ import com.opencsv.exceptions.CsvException;
 import lombok.Getter;
 import org.example.columns.MappingColumns;
 import org.example.commands.Browser;
-import org.example.commands.Glue;
+import org.example.glue.Glue;
 import org.example.tables.Table;
 import org.example.utils.ReadCSV;
 
@@ -16,15 +16,15 @@ import java.util.List;
 import java.util.Map;
 
 public class Module {
-    public static final int[] SECTION_START = {0};
-    public static final String EXPECTED_SECTION_BEGINNING = "Expected section beginning in line %d";
+    private static final int[] SECTION_START_PATTERN = {0};
+    private static final String EXPECTED_SECTION_BEGINNING = "Expected section beginning in line %d";
 
     private final String name;
-    List<List<String>> code;
-    List<Table<MappingColumns>> mappings;
+    private List<List<String>> code;
+    private List<Table<MappingColumns>> mappings;
     @Getter
-    Map<String, Section> sections;
-    List<Glue> glues;
+    private Map<String, Section> sections;
+    private List<Glue> glues;
 
     public Module(String path) throws IOException, CsvException {
         code = ReadCSV.readCSVWithoutColumns(path);
@@ -44,7 +44,7 @@ public class Module {
 
             lineNum += skipEmptyRows(lineNum, code);
 
-            assertThereIsOnlyTheseInRow(SECTION_START, EXPECTED_SECTION_BEGINNING.formatted(lineNum));
+            assertThereIsOnlyTheseInRow(SECTION_START_PATTERN, EXPECTED_SECTION_BEGINNING.formatted(lineNum));
             String sectionName = row.get(0);
             Section section = new Section(sectionName);
             sections.put(sectionName, section);
@@ -69,14 +69,14 @@ public class Module {
         while(startingLineNum + size < code.size()) {
             List<String> row = code.get(startingLineNum);
 
-            boolean empty = false;
+            boolean hasSomething = false;
             for (String cell : row) {
                 if (!cell.isEmpty()) {
-                    empty = true;
+                    hasSomething = true;
                     break;
                 }
             }
-            if (empty) {
+            if (hasSomething) {
                 break;
             }
 

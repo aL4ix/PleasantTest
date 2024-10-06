@@ -29,6 +29,5 @@ public class Main {
         module.parse();
         System.out.println(module.getSections());
         module.execute("Login user");
-        Browser.parse();
     }
 }

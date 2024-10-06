@@ -1,10 +1,10 @@
-package org.example.utils;
+package org.example.glue;
 
 import java.util.List;
 
 public class GlueParams {
-    List<String> params;
-    int index;
+    private List<String> params;
+    private int index;
 
     public GlueParams(List<String> params) {
         this.params = params;
