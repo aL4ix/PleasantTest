@@ -4,8 +4,10 @@ import com.opencsv.exceptions.CsvException;
 import lombok.Getter;
 import org.example.columns.MappingColumns;
 import org.example.commands.Browser;
+import org.example.commands.Builtin;
 import org.example.glue.Glue;
 import org.example.tables.Table;
+import org.example.utils.PleasantTestException;
 import org.example.utils.ReadCSV;
 
 import java.io.File;
@@ -17,56 +19,67 @@ import java.util.Map;
 
 public class Module {
     private static final int[] SECTION_START_PATTERN = {0};
-    private static final String EXPECTED_SECTION_BEGINNING = "Expected section beginning in line %d";
+    private static final String ERROR_EXPECTED_SECTION_BEGINNING = "Expected section beginning";
 
+    private final File file;
     private final String name;
-    private List<List<String>> code;
-    private List<Table<MappingColumns>> mappings;
+    private final List<List<String>> code;
+    private final List<Table<MappingColumns>> mappings;
     @Getter
-    private Map<String, Section> sections;
-    private List<Glue> glues;
+    private final Map<String, Section> sections;
+    private final List<Glue> glues;
 
     public Module(String path) throws IOException, CsvException {
         code = ReadCSV.readCSVWithoutColumns(path);
-        name = new File(path).getName().replace("Page.csv", "");
+        file = new File(path);
+        String fileName = file.getName();
         mappings = new ArrayList<>();
-        Table<MappingColumns> mapping = ReadCSV.readCSVWithEnumColumns(MappingColumns.class, "mappings/"+ name +"Map.csv");
-        mappings.add(mapping);
+        if (fileName.contains("pages/")) {
+            name = fileName.replace("Page.csv", "");
+            Table<MappingColumns> mapping = ReadCSV.readCSVWithEnumColumns(MappingColumns.class, "mappings/" + name + "Map.csv");
+            mappings.add(mapping);
+        } else {
+            name = fileName.replace(".csv", "");
+        }
         sections = new LinkedHashMap<>();
         glues = new ArrayList<>();
         glues.add(new Browser());
+        glues.add(new Builtin());
     }
 
     public void parse() {
         int lineNum = 0;
-        while(lineNum < code.size()) {
-            List<String> row = code.get(lineNum);
-
+        while (lineNum < code.size()) {
             lineNum += skipEmptyRows(lineNum, code);
-
-            assertThereIsOnlyTheseInRow(SECTION_START_PATTERN, EXPECTED_SECTION_BEGINNING.formatted(lineNum));
+            assertTheseExistInTheRow(file, lineNum, SECTION_START_PATTERN, ERROR_EXPECTED_SECTION_BEGINNING);
+            List<String> row = code.get(lineNum);
             String sectionName = row.get(0);
-            Section section = new Section(sectionName);
+            Section section = new Section(sectionName, file);
             sections.put(sectionName, section);
             lineNum += section.parse(code, ++lineNum);
 
             lineNum++;
         }
-
     }
 
-    public void execute(String sectionName) {
-        sections.get(sectionName).execute(mappings, glues);
+    public void execute(String sectionName, int lineNum) {
+        sections.get(sectionName).execute(mappings, glues, lineNum);
     }
 
-    public static void assertThereIsOnlyTheseInRow(int[] columns, String message) {
-
+    public void assertTheseExistInTheRow(File file, int lineNum, int[] columns, String message) {
+        List<String> row = code.get(lineNum);
+        for (int column : columns) {
+            String cell = row.get(column);
+            if (cell == null || cell.isBlank()) {
+                throw new PleasantTestException(file, lineNum, message);
+            }
+        }
     }
 
     public static int skipEmptyRows(int startingLineNum, List<List<String>> code) {
         int size = 0;
 
-        while(startingLineNum + size < code.size()) {
+        while (startingLineNum + size < code.size()) {
             List<String> row = code.get(startingLineNum);
 
             boolean hasSomething = false;

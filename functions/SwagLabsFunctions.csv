@@ -1,0 +1,9 @@
+Buy a product,,,
+,[Arguments],{product},
+,Steps,Login into the site,User should see the home page
+,,Add the product '{product}' to the cart,The cart has now one item
+,,Click on the cart,Cart page should be displayed
+,,Click on Checkout,"First name, Last name and zip code fields are displayed"
+,,"Add 'First' for First name, 'Last' as Last name and '12345' as Zip code",
+,,Click on Continue,Overview page should be displayed
+,,Click on Finish,Thank you for your order page should be displayed

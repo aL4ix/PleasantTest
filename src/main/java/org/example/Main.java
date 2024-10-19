@@ -2,7 +2,6 @@ package org.example;
 
 import com.opencsv.exceptions.CsvException;
 import org.example.columns.MappingColumns;
-import org.example.commands.Browser;
 import org.example.sections.Module;
 import org.example.tables.Table;
 import org.example.tables.TableRow;
@@ -28,6 +27,10 @@ public class Main {
         System.out.println(module);
         module.parse();
         System.out.println(module.getSections());
-        module.execute("Login user");
+        module.execute("Login user", 0);
+
+        Module functions = new Module("functions/SwagLabsFunctions.csv");
+        functions.parse();
+        functions.execute("Buy a product", 0);
     }
 }

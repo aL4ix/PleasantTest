@@ -1,33 +1,67 @@
 package org.example.glue;
 
+import org.example.utils.PleasantTestException;
+import org.example.utils.StringUtils;
+
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Glue {
-    private Map<String, ParsedGlue> parsed;
+    private final Map<String, ParsedGlue> parsedAtConstructTime;
+    private final static String REGEX = "\\{(\\w+)}|\\{(\\*)}";
 
     public Glue() {
-        parsed = parse();
+        parsedAtConstructTime = parse();
     }
+
     public Set<String> getCommands() {
-        return parsed.keySet();
+        return parsedAtConstructTime.keySet();
     }
-    public GlueReturn glue(String command, GlueParams glueParams) {
-        ParsedGlue parsedGlue = parsed.get(command);
-        String[] split = parsedGlue.pattern().split(",");
-        split = Arrays.copyOfRange(split, 1, split.length);
-        List<String> params = new ArrayList<>();
-        for (String s : split) {
-            s = s.stripLeading();
-            if (s.startsWith("{") && s.endsWith("}")) { // TODO add regex for interpolation
-                params.add(glueParams.getNextString());
+
+    public GlueReturn glue(String command, GlueParams paramsFromCall, File file, int lineNum) {
+        ParsedGlue parsedGlue = parsedAtConstructTime.get(command);
+        List<Object> params = constructParams(file, lineNum, paramsFromCall, parsedGlue);
+        Method method = parsedGlue.method();
+        GlueReturnType glueReturnType = getGlueReturnType(method);
+
+        Object returned;
+        try {
+            returned = method.invoke(this, params.toArray());
+        } catch (IllegalAccessException | InvocationTargetException | IllegalArgumentException e) {
+            PleasantTestException exception = new PleasantTestException(
+                    file, lineNum, "Exception when running command '%s', params '%s'", command, params);
+            exception.addSuppressed(e);
+            throw exception;
+        }
+        return new GlueReturn(returned, glueReturnType);
+    }
+
+    private static List<Object> constructParams(File file, int lineNum, GlueParams paramsFromCall, ParsedGlue parsedGlue) {
+        String[] splitPattern = parsedGlue.pattern().split(",");
+        splitPattern = Arrays.copyOfRange(splitPattern, 1, splitPattern.length);
+        List<Object> params = new ArrayList<>();
+        for (String oneStrFromPattern : splitPattern) {
+            oneStrFromPattern = oneStrFromPattern.stripLeading();
+            Pattern regexPattern = Pattern.compile(REGEX);
+            Matcher matcher = regexPattern.matcher(oneStrFromPattern);
+            if (matcher.find()) {
+                if (!StringUtils.isEmptyOrNull(matcher.group(1))) {
+                    params.add(paramsFromCall.getNextString());
+                } else if (!StringUtils.isEmptyOrNull(matcher.group(2))) {
+                    params.add(paramsFromCall.getTheRestAsList());
+                }
             } else {
-                glueParams.assertString(s);
+                paramsFromCall.assertNextStringIsEqualTo(oneStrFromPattern, file, lineNum);
             }
         }
-        Method method = parsedGlue.method();
+        return params;
+    }
 
+    private static GlueReturnType getGlueReturnType(Method method) {
         GlueReturnType glueReturnType;
         // Cannot implement in a switch in java 17 for some reason
         Class<?> returnType = method.getReturnType();
@@ -43,15 +77,9 @@ public class Glue {
             glueReturnType = GlueReturnType.OTHER;
             System.out.println("WARNING: Received %s".formatted(returnType));
         }
-
-        Object returned;
-        try {
-            returned = method.invoke(this, params.toArray());
-        } catch (IllegalAccessException | InvocationTargetException e) {
-            throw new RuntimeException(e);
-        }
-        return new GlueReturn(returned, glueReturnType);
+        return glueReturnType;
     }
+
     private Map<String, ParsedGlue> parse() {
         Map<String, ParsedGlue> result = new HashMap<>();
         for (Method method : getClass().getMethods()) {
