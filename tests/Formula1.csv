@@ -1,0 +1,10 @@
+Use,Formula1,,,,
+,,,,,
+Get Japan circuits,Priority=Medium,Complexity=Medium,,,
+,Formula1/Get status,,,,
+,Then,Expect,status code,to be,200
+,Formula1/Get competitions,country=Japan,,,
+,Then,Expect,status code,to be,200
+,,Extract,{id},,
+,Formula1/Get circuits,competition={id},,,
+,Then,Expect,status code,to be,200

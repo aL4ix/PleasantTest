@@ -7,3 +7,6 @@ x-rapidapi-key,{formulaAuth}
 ,
 Params,
 country,{country}
+,
+Extract from body,
+{id},/response[1]/id
