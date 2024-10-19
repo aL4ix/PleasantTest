@@ -1,2 +1,0 @@
-id,xpath,implements
-Checkout button,"//button[@data-test=""checkout""]",load

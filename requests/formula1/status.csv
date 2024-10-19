@@ -1,0 +1,4 @@
+GET,{formulaHost}/status
+,
+Headers,
+x-rapidapi-key,{formulaAuth}

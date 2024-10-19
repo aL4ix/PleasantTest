@@ -1,9 +1,9 @@
 Checkout,,,,,
-,[Arguments],FIRST NAME,LAST NAME,ZIP CODE,SUB TOTAL
+,[Arguments],{First name},{Last name},{Zip code},{Subtotal}
 ,Click on,Checkout button,,,
-,Type,FIRST NAME,on,First name field,
-,Type,LAST NAME,on,Last name field,
-,Type,ZIP CODE,on,Zipcode field,
+,Type,{First name},on,First name field,
+,Type,{Last name},on,Last name field,
+,Type,{Zip code},on,Zipcode field,
 ,Click on,Continue button,,,
-,Expect,Sub total,to be,SUB TOTAL,
+,Expect,Sub total,to be,{Subtotal},
 ,Click on,Finish button,,,

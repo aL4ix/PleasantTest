@@ -1,2 +1,0 @@
-id,xpath,implements
-Finish button,"//button[@data-test=""finish""]",load

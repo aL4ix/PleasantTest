@@ -1,0 +1,9 @@
+GET,{formulaHost}/circuits
+,
+[Arguments],{competition}=19
+,
+Headers,
+x-rapidapi-key,{formulaAuth}
+,
+Params,
+competition,{competition}

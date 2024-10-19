@@ -1,6 +1,6 @@
 Add product and get price,,,,,,,,
-,[Arguments],PRODUCT NAME,,,,,,
-,Search,One product,with,Item name,equals to,PRODUCT NAME,,# Get section with ProductName = ${productName}
+,[Arguments],{Product name},,,,,,
+,Search,One product,with,Item name,equals to,{Product name},,# Get section with ProductName = ${productName}
 ,Then,Add to cart,,,,,,# Add the ability to search by index
 ,,Get price,,,,,,
 ,,,,,,,,

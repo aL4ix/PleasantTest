@@ -1,0 +1,9 @@
+GET,{formulaHost}/competitions
+,
+[Arguments],{country}=Japan
+,
+Headers,
+x-rapidapi-key,{formulaAuth}
+,
+Params,
+country,{country}
