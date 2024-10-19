@@ -69,6 +69,7 @@ public class Section {
         return "Section{" +
                 "name='" + name + '\'' +
                 ", code=" + code +
+                ", file=" + file +
                 '}';
     }
 }

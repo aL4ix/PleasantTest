@@ -1,4 +1,4 @@
-GET,{formulaHost}/status
+GET,{formula1Host}/status
 ,
 Headers,
-x-rapidapi-key,{formulaAuth}
+x-rapidapi-key,{formula1Auth}

@@ -3,6 +3,7 @@ package org.example.commands;
 import org.example.glue.GlueAnnotation;
 import org.example.glue.Glue;
 
+@SuppressWarnings("unused")
 public class Browser extends Glue {
     @GlueAnnotation("Type, {string}, on, {string}")
     public void type(String value, String element) {

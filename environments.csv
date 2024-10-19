@@ -2,5 +2,5 @@ Variable,QA,Staging,Prod
 host,qa.myhost.com,staging.myhost.com,myhost.com
 invalidUser,123,234,345
 validUser,321,432,543
-formulaHosts,https://v1.formula-1.api-sports.io/,https://v1.formula-1.api-sports.io/,https://v1.formula-1.api-sports.io/
-formulaAuth,123,234,345
+formula1Host,https://v1.formula-1.api-sports.io/,https://v1.formula-1.api-sports.io/,https://v1.formula-1.api-sports.io/
+formula1Auth,123,234,345

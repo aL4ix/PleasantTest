@@ -4,7 +4,7 @@ import com.opencsv.exceptions.CsvException;
 import lombok.Getter;
 import org.example.columns.MappingColumns;
 import org.example.commands.Browser;
-import org.example.commands.Builtin;
+import org.example.commands.Specials;
 import org.example.glue.Glue;
 import org.example.tables.Table;
 import org.example.utils.PleasantTestException;
@@ -44,7 +44,7 @@ public class Module {
         sections = new LinkedHashMap<>();
         glues = new ArrayList<>();
         glues.add(new Browser());
-        glues.add(new Builtin());
+        glues.add(new Specials());
     }
 
     public void parse() {
