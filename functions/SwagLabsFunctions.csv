@@ -1,6 +1,6 @@
 Buy a product,,,
-,[Arguments],{product},
-,Steps,Login into the site,User should see the home page
+,[Arguments],{product}=hey,
+,Step,Login into the site,User should see the home page
 ,,Add the product '{product}' to the cart,The cart has now one item
 ,,Click on the cart,Cart page should be displayed
 ,,Click on Checkout,"First name, Last name and zip code fields are displayed"

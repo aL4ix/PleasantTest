@@ -6,6 +6,7 @@ import org.example.columns.MappingColumns;
 import org.example.commands.Browser;
 import org.example.commands.Specials;
 import org.example.glue.Glue;
+import org.example.glue.Memory;
 import org.example.tables.Table;
 import org.example.utils.PleasantTestException;
 import org.example.utils.ReadCSV;
@@ -28,6 +29,7 @@ public class Module {
     @Getter
     private final Map<String, Section> sections;
     private final List<Glue> glues;
+    private final Memory memory;
 
     public Module(String path) throws IOException, CsvException {
         code = ReadCSV.readCSVWithoutColumns(path);
@@ -44,7 +46,8 @@ public class Module {
         sections = new LinkedHashMap<>();
         glues = new ArrayList<>();
         glues.add(new Browser());
-        glues.add(new Specials());
+        memory = new Memory();
+        glues.add(new Specials(file, memory));
     }
 
     public void parse() {
@@ -63,7 +66,7 @@ public class Module {
     }
 
     public void execute(String sectionName, int lineNum) {
-        sections.get(sectionName).execute(mappings, glues, lineNum);
+        sections.get(sectionName).execute(mappings, glues, lineNum, memory);
     }
 
     public void assertTheseExistInTheRow(File file, int lineNum, int[] columns, String message) {

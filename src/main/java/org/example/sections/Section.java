@@ -4,6 +4,7 @@ import org.example.columns.MappingColumns;
 import org.example.glue.Glue;
 import org.example.glue.GlueParams;
 import org.example.glue.GlueReturn;
+import org.example.glue.Memory;
 import org.example.tables.Table;
 import org.example.utils.PleasantTestException;
 
@@ -23,6 +24,7 @@ public class Section {
     }
 
     public int parse(List<List<String>> moduleCode, int lineNum) {
+        String previousCommand = "";
         while(lineNum < moduleCode.size()) {
             lineNum += Module.skipEmptyRows(lineNum, moduleCode);
             List<String> originalRow = moduleCode.get(lineNum);
@@ -30,11 +32,21 @@ public class Section {
             if (!originalRow.get(0).isEmpty())
                 break;
 
+            // Remove the first column since sections don't use it
             List<String> row = new ArrayList<>(originalRow);
             row.remove(0);
+
+            // Repeat the previous command if it is empty
+            String command = row.get(0);
+            if (command.isEmpty()) {
+                command = previousCommand;
+                row.set(0, command);
+            }
+
             code.add(row);
 
             lineNum++;
+            previousCommand = command;
         }
         if (code.isEmpty()) {
             throw new PleasantTestException(file, lineNum, "Section '%s' has no code", name);
@@ -42,25 +54,22 @@ public class Section {
         return code.size();
     }
 
-    public void execute(List<Table<MappingColumns>> mappings, List<Glue> glues, int lineNum) {
-        String previousCommand = "";
+    public void execute(List<Table<MappingColumns>> mappings, List<Glue> glues, int lineNum, Memory memory) {
         for (List<String> rows : code) {
             String command = rows.get(0);
-            if (command.isEmpty()) {
-                command = previousCommand;
-            }
+            List<String> paramsRow = rows.subList(1, rows.size());
+
             boolean found = false;
             for (Glue glue : glues) {
                 if (glue.getCommands().contains(command)) {
                     found = true;
-                    GlueReturn glueReturn = glue.glue(command, new GlueParams(rows.subList(1, rows.size())), file, lineNum);
+                    GlueReturn glueReturn = glue.glue(command, new GlueParams(paramsRow, memory), file, lineNum);
                 }
             }
             if (!found) {
                 throw new PleasantTestException(file, lineNum, "Invalid command '%s' in section '%s'", command, name);
             }
             lineNum += 1;
-            previousCommand = command;
         }
     }
 
