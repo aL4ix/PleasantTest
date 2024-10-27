@@ -1,9 +1,0 @@
-Add product and get price,,,,,,,,
-,[Arguments],{Product name},,,,,,
-,Search,One product,with,Item name,equals to,{Product name},,# Get section with ProductName = ${productName}
-,Then,Add to cart,,,,,,# Add the ability to search by index
-,,Get price,,,,,,
-,,,,,,,,
-Open shopping cart,,,,,,,,
-,Click on,Shopping cart button,,,,,,
-,Expect,CartPage,to be,displayed,,,,

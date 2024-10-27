@@ -1,4 +1,4 @@
-# Syntax expresions
+# Syntax expressions
 IDENTIFIER = letters,numbers,space
 XPATH = any string compatible with xpath
 COMMAND = Any reserved word or string defined in a library
@@ -55,3 +55,9 @@ Obviously if somebody define two phrases that are the same, then you need FE.phr
 Add IfMobile, IfDesktop
 
 
+# New features
+* If a keyword is empty then the previous keyword is repeated
+* Variables are defined with {variable}
+* Variables that come from the data spec files are marked with <variable>
+* Parameters always use named parameters
+* A section has parameters on the right to define meta-data

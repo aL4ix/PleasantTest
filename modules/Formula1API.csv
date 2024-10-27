@@ -1,0 +1,9 @@
+Get circuits
+,[Arguments],{country}
+,Formula1/Get status,,,,
+,Then,Expect,<status code>,to be,200
+,Formula1/Get competitions,country={country},,,
+,Then,Expect,<status code>,to be,200
+,,Extract,{id},,
+,Formula1/Get circuits,competition={id},,,
+,Then,Expect,<status code>,to be,200

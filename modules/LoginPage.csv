@@ -1,0 +1,6 @@
+Login user,,,,
+,[Arguments],{User},{Password},
+,Type,{User},on,<Login field>
+,Type,{Password},on,<Password field>
+,Click on,<Login button>,,
+,Expect,<ProductsPage>,to be,displayed

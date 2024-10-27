@@ -1,7 +1,7 @@
 Enter search term,,,,,,
 ,[Arguments],{Term},,,,
-,Type,{Term},on,Search field,,
+,Type,{Term},on,<Search field>,,
 ,,,,,,
 Search name in my table,,,,,,
 ,[Arguments],{Name},,,,
-,Expect,{Name},In column,Name,In table,My table
+,Expect,{Name},In column,Name,In table,<My table>
