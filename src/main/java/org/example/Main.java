@@ -20,16 +20,16 @@ public class Main {
         List<TableRow<String>> envEntries = ReadCSV.readCSVWithColumns("environments.csv");
         System.out.println(envEntries);
 
-        List<List<String>> page = ReadCSV.readCSVWithoutColumns("pages/LoginPage.csv");
+        List<List<String>> page = ReadCSV.readCSVWithoutColumns("modules/LoginPage.csv");
         System.out.println(page);
 
-        Module module = new Module("pages/LoginPage.csv");
+        Module module = new Module("modules/LoginPage.csv");
         System.out.println(module);
         module.parse();
         System.out.println(module.getSections());
         module.execute("Login user", 0);
 
-        Module functions = new Module("functions/SwagLabsFunctions.csv");
+        Module functions = new Module("modules/SwagLabsFunctions.csv");
         functions.parse();
         functions.execute("Buy a product", 0);
     }
