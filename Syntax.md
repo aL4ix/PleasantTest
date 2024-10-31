@@ -6,6 +6,8 @@ reserved word = {Search, Expect, Then, [Arguments]}
 library = Browser defines [Click on, Type, ]
 parameters = this is defined exactly by the COMMAND
 EXPECTATION = any string defined in a library
+PROPERTY = Defined in a DataSpec
+METHOD = Defined in a DataSpec
 
 # Native Commands
 Search > IDENTIFIER > with > IDENTIFIER > equals to > IDENTIFIER
