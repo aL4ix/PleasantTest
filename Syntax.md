@@ -63,3 +63,19 @@ Add IfMobile, IfDesktop
 * Variables that come from the data spec files are marked with <variable>
 * Parameters always use named parameters
 * A section has parameters on the right to define meta-data
+
+
+# Expect patterns
+## Tables
+* to find,{string},in the column,<Column>,of the table,<Table>
+
+## API
+* <Status code>, equals to, {integer}
+* <Extracted>, equals to,{defined type}
+
+## Browser
+* <Element>, equals to, {string}  # Element.getText()
+* <Element>, to be, displayed
+* <Page>, to be, displayed  # How?
+
+# SEARCH???

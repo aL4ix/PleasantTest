@@ -4,4 +4,4 @@ Enter search term,,,,,,
 ,,,,,,
 Search name in my table,,,,,,
 ,[Arguments],{Name},,,,
-,Expect,{Name},In column,Name,In table,<My table>
+,Expect,to find,{Name},in the column,<Name>,of the table,<My table>
