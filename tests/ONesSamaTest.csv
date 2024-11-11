@@ -1,7 +1,7 @@
-Color test,,,,,,
+Color test,Priority=Medium,Complexity=Medium,,,,
 ,Run rom,color_test.nes,,,,
 ,Run cycles,12000,,,,
 ,Get memory,0x1234,,,,
-,Then,Expect,{it},to be,1,
+,Then,Expect,{the result},to be,1,
 ,Take screenshot,,,,,
-,Then,Expect,{it},to be,screenshot,test/color.png
+,Then,Expect,{the result},to match,screenshot,test/color.png

@@ -4,10 +4,10 @@ Use,LoginPage,,,,
 ,,,,,
 First e2e,Priority=Medium,Complexity=Medium,,,
 ,Open Page,https://www.saucedemo.com/,,,
-,Login user,standard_user,secret_sauce,,
+,Login with,standard_user,secret_sauce,,
 ,Add product and get price,Sauce Labs Bike Light,,,
-,Then,Sum,{it},as,{Subtotal}
+,Then,Sum,{the result},as,{subtotal}
 ,Add product and get price,Sauce Labs Backpack,,,
-,Then,Sum,{it},as,{Subtotal}
+,Then,Sum,{the result},as,{subtotal}
 ,Open shopping cart,,,,
-,Checkout,First name=First,Last name=Last,Zip code=12345,Subtotal={Subtotal}
+,Checkout,First name=First,Last name=Last,Zip code=12345,Subtotal={subtotal}

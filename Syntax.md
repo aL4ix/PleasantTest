@@ -13,7 +13,8 @@ METHOD = Defined in a DataSpec
 Search > IDENTIFIER > with > IDENTIFIER > equals to > IDENTIFIER
 Expect > IDENTIFIER > to be > EXPECTATION
 Then > COMMAND > command parameters
-Sum it as > IDENTIFIER
+Sum > IDENTIFIER > as > IDENTIFIER
+Expect to > COMMAND > ...
 
 # Browser Commands
 Click on > IDENTIFIER

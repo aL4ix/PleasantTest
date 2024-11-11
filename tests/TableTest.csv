@@ -4,4 +4,4 @@ Test tables,Priority=Medium,Complexity=Medium
 ,Comment,https://ant-design.antgroup.com/~demos/table-demo-edit-cell
 ,Open page,https://www.codehim.com/demo/bootstrap-5-table-with-pagination-and-search-and-sorting/
 ,Enter search term,San
-,Expect name in my table,Zorita Serrano
+,Expect,<name>,in,<my table>,to be,Zorita Serrano

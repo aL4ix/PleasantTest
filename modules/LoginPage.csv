@@ -1,4 +1,4 @@
-Login user,,,,
+Login with,,,,
 ,[Arguments],{User},{Password},
 ,Type,{User},on,<Login field>
 ,Type,{Password},on,<Password field>
