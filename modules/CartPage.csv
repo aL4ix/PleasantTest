@@ -1,9 +1,8 @@
-Checkout,,,,,
-,[Arguments],{First name},{Last name},{Zip code},{Subtotal}
-,Click on,Checkout button,,,
-,Type,{First name},on,<First name field>,
-,Type,{Last name},on,<Last name field>,
-,Type,{Zip code},on,<Zipcode field>,
-,Click on,<Continue button>,,,
-,Expect,<Sub total>,to be,{Subtotal},
-,Click on,<Finish button>,,,
+Checkout with first name,{First name},last name,{Last name},zip code,{Zip code},and expect subtotal to be equal to,{Subtotal}
+,Click on,Checkout button,,,,,
+,Type,{First name},on,<First name field>,,,
+,Type,{Last name},on,<Last name field>,,,
+,Type,{Zip code},on,<Zipcode field>,,,
+,Click on,<Continue button>,,,,,
+,Expect,<Sub total>,to be,{Subtotal},,,
+,Click on,<Finish button>,,,,,

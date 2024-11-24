@@ -1,13 +1,14 @@
-Use,LoginPage,,,,
-,ProductsPage,,,,
-,CartPage,,,,
-,,,,,
-First e2e,Priority=Medium,Complexity=Medium,,,
-,Open Page,https://www.saucedemo.com/,,,
-,Login with,standard_user,secret_sauce,,
-,Add product and get price,Sauce Labs Bike Light,,,
-,Then,Sum,{the result},as,{subtotal}
-,Add product and get price,Sauce Labs Backpack,,,
-,Then,Sum,{the result},as,{subtotal}
-,Open shopping cart,,,,
-,Checkout,First name=First,Last name=Last,Zip code=12345,Subtotal={subtotal}
+Use,LoginPage,,,,,,,
+,ProductsPage,,,,,,,
+,CartPage,,,,,,,
+,,,,,,,,
+First e2e,,,,,,,,
+,[Attributes],Priority=Medium,Complexity=Medium,,,,,
+,Open Page,https://www.saucedemo.com/,,,,,,
+,Login with user,standard_user,and password,secret_sauce,,,,
+,Add product,Sauce Labs Bike Light,and get price,,,,,
+,Then,Sum,{the result},as,{subtotal},,,
+,Add product,Sauce Labs Backpack,and get price,,,,,
+,Then,Sum,{the result},as,{subtotal},,,
+,Open shopping cart,,,,,,,
+,Checkout with first name,First,last name,Last,zip code,12345,and expect subtotal to be equal to,{subtotal}

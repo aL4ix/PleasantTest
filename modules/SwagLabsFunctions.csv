@@ -1,5 +1,4 @@
-Buy a product,,,
-,[Arguments],{product}=hey,
+Buy product,{product}=My product,,
 ,Step,Login into the site,User should see the home page
 ,,Add the product '{product}' to the cart,The cart has now one item
 ,,Click on the cart,Cart page should be displayed

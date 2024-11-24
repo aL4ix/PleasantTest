@@ -1,5 +1,7 @@
-Login with,,,,
-,[Arguments],{User},{Password},
+Open page,{URL},,,
+,Browser.Open page,{URL},,
+,,,,
+Login with user,{User},and password,{Password},
 ,Type,{User},on,<Login field>
 ,Type,{Password},on,<Password field>
 ,Click on,<Login button>,,

@@ -62,7 +62,7 @@ Add IfMobile, IfDesktop
 * If a keyword is empty then the previous keyword is repeated
 * Variables are defined with {variable}
 * Variables that come from the data spec files are marked with <variable>
-* Parameters always use named parameters
+* Parameters always use named parameters. really? for modules only or tests only? both?
 * A section has parameters on the right to define meta-data
 
 
@@ -80,3 +80,11 @@ Add IfMobile, IfDesktop
 * <Page>, to be, displayed  # How?
 
 # SEARCH???
+
+# Supposedly
+The name of the methods would not matter, but the steps inside matter because those are the test steps.
+Although it would be necessary to override this manually in cases where it would not make sense when the method is too
+technical.
+
+We can only use methods defined in modules right? what about Sum? that is coming from a library. Definitely we should
+be able to use Selenium in a test file.
