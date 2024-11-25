@@ -1,8 +1,8 @@
 Color test,,,,,,
 ,[Attributes],Priority=Medium,Complexity=Medium,,,
-,Run ROM,color_test.nes,,,,
+,Load ROM,color_test.nes,,,,
 ,Run,12000,cycles,,,
 ,Get memory at,0x1234,,,,
 ,Then,Expect,{the result},to be,1,
 ,Take screenshot,,,,,
-,Then,Expect,{the result},to match,screenshot,test/color.png
+,Then,Expect,{the result},to match,the screenshot,test/color.png

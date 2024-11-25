@@ -1,7 +1,6 @@
-GET,{formula1Host}/status
-,
-Headers,
-x-rapidapi-key,{formula1Auth}
-
-Extract from body
-active,response.subscription.active
+GET,{formula1Host}/status,
+,Headers,
+,x-rapidapi-key,{formula1Auth}
+,,
+,Extract from body,
+,active,response.subscription.active

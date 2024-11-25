@@ -1,10 +1,10 @@
-Use,One Product,,,,,,,
-,,,,,,,,
-Add product,{Product name},and get price,,,,,,
-,Search,<One product>,with,<Item name>,equals to,{Product name},,# Get section with ProductName = ${productName}
-,Then,Add to cart,,,,,,# Add the ability to search by index
-,,Get price,,,,,,
-,,,,,,,,
-Open shopping cart,,,,,,,,
-,Click on,<Shopping cart button>,,,,,,
-,Expect,<CartPage>,to be,displayed,,,,
+Use,One Product,,,,,,
+,,,,,,,
+Add product,{Product name},and get price,,,,,
+,Search,<One product>,where,<Item name>,is,{Product name},# Get section with ProductName = ${productName}
+,Then,Add to cart,,,,,# Add the ability to search by index
+,,Get price,,,,,
+,,,,,,,
+Open shopping cart,,,,,,,
+,Click on,<Shopping cart button>,,,,,
+,Expect,<CartPage>,to be,displayed,,,
