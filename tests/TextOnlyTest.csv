@@ -1,9 +1,9 @@
 Use,SwagLabsFunctions,,
 ,,,
 Buy the product Sauce Labs Backpack,,,
-,[Attributes],Priority=Medium,Complexity=Medium
-,Buy product,Sauce Labs Backpack,
+,[Attributes],"Priority=""Medium""","Complexity=""Medium"""
+,Buy product,"""Sauce Labs Backpack""",
 ,,,
 Buy the product Sauce Labs Bolt T-Shirt,,,
-,[Attributes],Priority=Medium,Complexity=Medium
-,Buy product,Sauce Labs Bolt T-Shirt,
+,[Attributes],"Priority=""Medium""","Complexity=""Medium"""
+,Buy product,"""Sauce Labs Bolt T-Shirt""",

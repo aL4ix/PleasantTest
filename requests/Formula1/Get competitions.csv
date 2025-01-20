@@ -1,11 +1,11 @@
-GET,{formula1Host}/competitions,
-,[Arguments],{country}=Japan
-,,
-,Headers,
-,x-rapidapi-key,{formula1Auth}
-,,
-,Params,
-,country,{country}
-,,
-,Extract from body,
-,id,response[0].id
+GET,{formula1Host}/competitions,,
+,[Arguments],"{country}=""Japan""",
+,,,
+,Headers,,
+,x-rapidapi-key,{formula1Auth},
+,,,
+,Params,,
+,country,{country},
+,,,
+,Extract from body,,
+,id,response[0].id,# quotations or not?

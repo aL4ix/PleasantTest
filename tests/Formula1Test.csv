@@ -1,5 +1,5 @@
 Use,Formula1API,,
 ,,,
 Test Japan’s circuits,,,
-,[Attributes],Priority=Medium,Complexity=Medium
-,Get circuits,country=Japan,
+,[Attributes],"Priority=""Medium""","Complexity=""Medium"""
+,Get circuits,"country=""Japan""",
